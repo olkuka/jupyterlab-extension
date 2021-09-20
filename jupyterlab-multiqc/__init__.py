@@ -34,7 +34,8 @@ def _load_jupyter_server_extension(server_app):
     server_app: jupyterlab.labapp.LabApp
         JupyterLab application instance
     """
-    setup_handlers(server_app.web_app)
+    url_path = "jupyterlab-multiqc"
+    setup_handlers(server_app.web_app, url_path)
     server_app.log.info("Registered HelloWorld extension at URL path /jupyterlab-multiqc")
 
 # For backward compatibility with notebook server - useful for Binder/JupyterHub
