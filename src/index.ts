@@ -17,6 +17,20 @@ const activate = (app: JupyterFrontEnd, launcher: ILauncher) => {
   widget.title.label = 'MultiQC extension';
   widget.title.closable = true;
 
+  let img = document.createElement('P');
+  content.node.appendChild(img);
+
+  requestAPI<any>('get_example')
+    .then(data => {
+      console.log(data);
+      img.innerText = data.data;
+    })
+    .catch(reason => {
+      console.error(
+        `The jupyterlab-multiqc server extension appears to be missing.\n${reason}`
+      );
+    });
+
   const command: string = 'multiqc:open';
 
   // add to launcher
@@ -32,16 +46,6 @@ const activate = (app: JupyterFrontEnd, launcher: ILauncher) => {
   });
 
   launcher.add({ command, category: 'Test' });
-
-  requestAPI<any>('get_example')
-    .then(data => {
-      console.log(data);
-    })
-    .catch(reason => {
-      console.error(
-        `The jupyterlab-multiqc server extension appears to be missing.\n${reason}`
-      );
-    });
 }
 
 /**
