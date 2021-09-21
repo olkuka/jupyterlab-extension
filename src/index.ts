@@ -46,8 +46,8 @@ const extension: JupyterFrontEndPlugin<void> = {
     const category = 'Extension Examples';
 
     commands.addCommand(command, {
-      label: 'Get Server Content in a IFrame Widget',
-      caption: 'Get Server Content in a IFrame Widget',
+      label: 'Run MultiQC',
+      caption: 'Run MultiQC in a IFrame Widget',
       execute: () => {
         const widget = new IFrameWidget();
         shell.add(widget, 'main');
@@ -72,9 +72,9 @@ class IFrameWidget extends IFrame {
   constructor() {
     super();
     const baseUrl = PageConfig.getBaseUrl();
-    this.url = baseUrl + 'jupyterlab-multiqc/public/index.html';
+    this.url = baseUrl + 'jupyterlab-multiqc/public/multiqc_report.html';
     this.id = 'doc-example';
-    this.title.label = 'Server Doc';
+    this.title.label = 'MultiQC';
     this.title.closable = true;
     this.node.style.overflowY = 'auto';
   }
