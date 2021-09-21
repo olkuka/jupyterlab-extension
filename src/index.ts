@@ -36,7 +36,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     // GET request
     try {
       const data = await requestAPI<any>('get_example');
-      console.log(data);
+      console.log(data.data);
     } catch (reason) {
       console.error(`Error on GET /jupyterlab-multiqc/get_example.\n${reason}`);
     }
